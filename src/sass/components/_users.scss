@@ -1,0 +1,21 @@
+.users__title {
+  font-size: 40px;
+  line-height: 1;
+  margin-top: 145px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.users__semiTitle {
+  font-size: 22px;
+  line-height: 1.2727;
+  text-align: center;
+}
+
+.users__item:first-of-type {
+  margin-top: 32px;
+
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+}

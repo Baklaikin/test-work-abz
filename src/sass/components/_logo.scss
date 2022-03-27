@@ -2,6 +2,10 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  & > img {
+    margin-left: 1px;
+  }
 }
 
 .picture {
