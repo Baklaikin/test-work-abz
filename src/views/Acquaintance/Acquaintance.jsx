@@ -20,7 +20,7 @@ export default function Acquaintance() {
         mind. They should also be excited to learn, as the world of Front-End
         Development keeps evolving.
       </p>
-      <Button />
+      <Button text={"Sign up"} />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 .users__title {
   font-size: 40px;
   line-height: 1;
-  margin-top: 145px;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -12,10 +11,23 @@
   text-align: center;
 }
 
+.users__list {
+  margin-bottom: 50px;
+}
+
 .users__item:first-of-type {
   margin-top: 32px;
+}
+.users__item:not(:last-of-type) {
+  margin-bottom: 20px;
+}
 
-  &:not(:last-of-type) {
-    margin-bottom: 20px;
-  }
+.users__wrapper {
+  padding-top: 145px;
+}
+
+.users__button {
+  width: 148px;
+  margin-left: auto;
+  margin-right: auto;
 }

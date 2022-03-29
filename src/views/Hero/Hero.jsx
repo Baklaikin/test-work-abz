@@ -5,15 +5,17 @@ export default function Hero() {
     <div className="hero">
       <div className="container">
         <div className="hero__container">
-          <h1 className="hero__title">
+          <h1 className="hero__title points">
             Test assignment for front-end developers
           </h1>
-          <h2 className="hero__text">
+        </div>
+        <div className="hero__textContainer">
+          <p className="hero__text points">
             Front-end developers make sure the user sees and interacts with all
             the necessary elements to ensure conversion.
-          </h2>
-          <Button />
+          </p>
         </div>
+        <Button text={"Sign up"} />
       </div>
     </div>
   );
