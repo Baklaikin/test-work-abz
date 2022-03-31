@@ -18,7 +18,7 @@ export default function Users() {
         </li>
       </ul>
       <div className="users__button">
-        <Button text={"Show more"} />
+        <Button text={"Show more"} className={"button"} />
       </div>
     </div>
   );

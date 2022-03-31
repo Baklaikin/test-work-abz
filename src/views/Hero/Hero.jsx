@@ -15,7 +15,7 @@ export default function Hero() {
             the necessary elements to ensure conversion.
           </p>
         </div>
-        <Button text={"Sign up"} />
+        <Button text={"Sign up"} className={"button"} />
       </div>
     </div>
   );

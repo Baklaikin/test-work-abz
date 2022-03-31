@@ -59,28 +59,61 @@ export default function Form() {
               type="radio"
               name="position"
               value="Frontend developer"
-              checked
+              className="form__radio-input"
             />
+            <span className="customRadioBox">
+              <span></span>
+            </span>
             <p>Frontend developer</p>
           </label>
           <label className="form__radio-wrapper">
-            <input type="radio" name="position" value="Backend developer" />
+            <input
+              type="radio"
+              name="position"
+              value="Backend developer"
+              className="form__radio-input"
+            />
+            <span className="customRadioBox">
+              <span></span>
+            </span>
             <p>Backend developer</p>
           </label>
           <label className="form__radio-wrapper">
-            <input type="radio" name="position" value="Designer" />
+            <input
+              type="radio"
+              name="position"
+              value="Designer"
+              className="form__radio-input"
+            />
+            <span className="customRadioBox">
+              <span></span>
+            </span>
             <p>Designer</p>
           </label>
           <label className="form__radio-wrapper">
-            <input type="radio" name="position" value="QA" />
+            <input
+              type="radio"
+              name="position"
+              value="QA"
+              className="form__radio-input"
+            />
+            <span className="customRadioBox">
+              <span></span>
+            </span>
             <p>QA</p>
           </label>
         </form>
         <div className="upload">
-          <button>Upload</button>
-          <input type="text" placeholder="Upload your photo" />
+          <button className="upload__button">Upload</button>
+          <input
+            type="text"
+            placeholder="Upload your photo"
+            className="upload__input"
+          />
         </div>
-        <Button text={"Sign up"} />
+        <div className="signUp-btn">
+          <Button text={"Sign up"} className={"signUp-btn"} />
+        </div>
       </div>
       <div className="paws"></div>
     </section>
