@@ -15,7 +15,7 @@
 
 .menuButton {
   padding: 0;
-  margin-right: 16px;
+  // margin-right: 16px;
   width: 24px;
   height: 24px;
   border: none;
@@ -29,6 +29,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   padding: 3px 16px 0;
   min-width: 360px;
   width: 100%;

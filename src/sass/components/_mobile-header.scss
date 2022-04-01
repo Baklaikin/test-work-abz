@@ -1,0 +1,27 @@
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  & > img {
+    margin-left: 1px;
+  }
+}
+
+.picture {
+  width: 38px;
+  height: 26px;
+}
+
+.mobile__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 3px 16px 0;
+  min-width: 270;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: $primaryBgColor;
+}

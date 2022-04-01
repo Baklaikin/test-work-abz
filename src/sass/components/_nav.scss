@@ -1,0 +1,30 @@
+.navigation__wrapper {
+  padding-left: 16px;
+  border-top: 1px solid #e0e0e0;
+
+  &:not(:first-of-type) {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+    border-top: none;
+  }
+}
+.navigation__item:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+
+.navigation__item:last-of-type {
+  margin-bottom: 30px;
+}
+
+.navigation__item:first-of-type {
+  margin-top: 27px;
+}
+
+.navigation__item-link {
+  color: #000;
+  font-size: 16px;
+  line-height: 1.625;
+}

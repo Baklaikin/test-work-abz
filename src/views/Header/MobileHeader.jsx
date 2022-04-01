@@ -1,10 +1,9 @@
 import logo from "img/logo.svg";
 import logoText from "img/testtask.png";
-// import MobileMenu from "../Mobile-menu/MobileMenu";
 
-export default function Header() {
+export default function MobileHeader() {
   return (
-    <div className="header">
+    <div className="mobile__header">
       <a className="logo" href="index.html">
         <img
           src={logo}
@@ -13,8 +12,6 @@ export default function Header() {
         />
         <img src={logoText} alt="logo text TESTTASK" />
       </a>
-      <button type="button" className="menuButton"></button>
-      {/* <MobileMenu className={"mobile__menu"}/> */}
     </div>
   );
 }

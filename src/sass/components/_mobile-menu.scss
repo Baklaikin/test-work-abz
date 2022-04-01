@@ -1,0 +1,40 @@
+.mobile__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 945px;
+  background-color: $primaryBgColor;
+}
+
+.mobile__background {
+  position: absolute;
+  top: 0;
+  left: -360px;
+  z-index: 1;
+  width: 100%;
+  height: 945px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.is-open {
+  left: 0;
+  z-index: 3;
+
+  & ~ .hero {
+    margin-top: -28px;
+  }
+}
+
+.mobile__bottom {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+}
+
+.mobile__section {
+  margin-top: 61px;
+}
