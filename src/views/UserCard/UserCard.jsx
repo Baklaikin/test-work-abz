@@ -7,10 +7,10 @@ export default function UserCard({ data }) {
             <div className="userCard__avatar">
               <img src={user.photo} alt="user face" />
             </div>
-            <h2 className="userCard__title twoRows">{user.name}</h2>
-            <p className="userCard__text twoRows">{user.position}</p>
-            <p className="userCard__text oneRow">{user.email}</p>
-            <p className="userCard__text oneRow"> {user.phone}</p>
+            <h2 className="userCard__title points">{user.name}</h2>
+            <p className="userCard__text points">{user.position}</p>
+            <p className="userCard__text points">{user.email}</p>
+            <p className="userCard__text points"> {user.phone}</p>
           </div>
         </li>
       );

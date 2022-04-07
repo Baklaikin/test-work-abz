@@ -1,9 +1,15 @@
 .button {
+  position: relative;
+  overflow: hidden;
   width: 148px;
   height: 50px;
   background-color: $primaryButtonColor;
   border-radius: 80px;
   border: none;
+
+  &:hover {
+    background-color: #ffe302;
+  }
 }
 
 .button:disabled {
@@ -15,4 +21,37 @@
   font-family: "Asap", sans-serif;
   font-size: 18px;
   line-height: 1.4;
+  color: $textAccentColor;
+}
+
+.button__focus {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 14px;
+  width: 120px;
+  height: 50px;
+  border-radius: 80px;
+  background-color: $btnActionColor;
+  transition: display 250ms ease-in;
+
+  .button:focus > & {
+    display: block;
+  }
+}
+
+.button__pressed {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 7px;
+  width: 134px;
+  height: 86px;
+  border-radius: 80px;
+  background-color: $btnActionColor;
+  transition: display 250ms ease-in;
+
+  .button:active > & {
+    display: block;
+  }
 }

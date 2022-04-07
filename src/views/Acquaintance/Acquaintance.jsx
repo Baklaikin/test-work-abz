@@ -9,11 +9,11 @@ export default function Acquaintance() {
         alt="A man sitting behind the computer"
         className="image"
       />
-      <h2 className="acquaintance__title">Let's get acquainted</h2>
-      <h3 className="acquaintance__semiTitle">
+      <h2 className="acquaintance__title points">Let's get acquainted</h2>
+      <h3 className="acquaintance__semiTitle points">
         I'm a good front-end developer
       </h3>
-      <p className="acquaintance__text">
+      <p className="acquaintance__text points">
         What defines a good front-end developer is one that has skilled
         knowledge of HTML, CSS, JS with a vast understanding of User design
         thinking as they'll be building web interfaces with accessibility in

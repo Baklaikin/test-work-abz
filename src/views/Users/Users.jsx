@@ -20,15 +20,17 @@ export default function Users() {
       setDisable(true);
     }
     setParams({
-      page: page,
+      page,
       count: 3,
     });
   }
 
   return (
     <div className="container users__wrapper">
-      <h2 className="users__title">Our cheerful users</h2>
-      <h3 className="users__semiTitle">The best specialists are shown below</h3>
+      <h2 className="users__title points">Our cheerful users</h2>
+      <h3 className="users__semiTitle points">
+        The best specialists are shown below
+      </h3>
       <ul className="users__list">{users && <UserCard data={users} />}</ul>
       <div className="users__button">
         <Button
