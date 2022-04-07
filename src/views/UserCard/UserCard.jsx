@@ -1,15 +1,19 @@
-export default function UserCard() {
-  return (
-    <div className="userCard__thumb">
-      <div className="userCard__avatar"></div>
-      <h2 className="userCard__title twoRows">
-        Salvador Stewart Flynn Thomas Salvatore Morgan Bayraktar.
-      </h2>
-      <p className="userCard__text twoRows">
-        Leading specialist of the department of control over co...
-      </p>
-      <p className="userCard__text oneRow">JeromeKlarkaJeromeKlarka@...</p>
-      <p className="userCard__text oneRow"> +38 (098) 278 76 24</p>
-    </div>
-  );
+export default function UserCard({ data }) {
+  if (data) {
+    return data.users.map((user) => {
+      return (
+        <li key={user.id} className="users__item">
+          <div className="userCard__thumb">
+            <div className="userCard__avatar">
+              <img src={user.photo} alt="user face" />
+            </div>
+            <h2 className="userCard__title twoRows">{user.name}</h2>
+            <p className="userCard__text twoRows">{user.position}</p>
+            <p className="userCard__text oneRow">{user.email}</p>
+            <p className="userCard__text oneRow"> {user.phone}</p>
+          </div>
+        </li>
+      );
+    });
+  }
 }

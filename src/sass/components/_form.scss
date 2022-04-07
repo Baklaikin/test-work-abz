@@ -71,8 +71,7 @@
 }
 
 .paws {
-  min-width: 328px;
-  width: 100%;
+  width: 328px;
   height: 124px;
   margin-left: auto;
   background-image: url(../../img/paws.svg);
@@ -158,6 +157,7 @@
 .upload__input {
   height: 54px;
   padding: 14px 16px;
+  width: 100%;
   border: 1px solid $radio;
   border-radius: 4px;
   border-left: none;

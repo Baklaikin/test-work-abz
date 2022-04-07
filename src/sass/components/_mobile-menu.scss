@@ -10,31 +10,31 @@
 .mobile__background {
   position: absolute;
   top: 0;
-  left: -360px;
+  left: 0;
+  transform: translateX(-101%);
   z-index: 1;
   width: 100%;
-  height: 945px;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  transition: transform 300ms ease-in;
 }
 
 .is-open {
-  left: 0;
+  transform: translateX(0);
   z-index: 3;
+  overflow-y: scroll;
+}
 
-  & ~ .hero {
-    margin-top: -28px;
-  }
+.header > .mobile__background.is-open ~ .hero {
+  margin-top: -28px;
 }
 
 .mobile__bottom {
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  width: 100%;
-  height: 50px;
+  width: 100vw;
+  height: 51px;
   background-color: black;
 }
 
 .mobile__section {
-  margin-top: 61px;
+  margin-top: 60px;
 }
