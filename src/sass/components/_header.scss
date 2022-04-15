@@ -38,4 +38,11 @@
   justify-content: space-between;
   align-items: center;
   background-color: $primaryBgColor;
+
+  @media screen and (min-width: 768px) {
+    padding: 25px 35px;
+  }
+  @media screen and (min-width: 1024px) {
+    padding: 17px 60px;
+  }
 }

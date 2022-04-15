@@ -1,28 +1,48 @@
 import UserCard from "../UserCard/UserCard";
 import Button from "views/Button/Button";
-import { GetUsers } from "../../Api/Api";
+import { GetMobileUsers, GetTabletUsers, GetDesktopUsers } from "../../Api/Api";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export default function Users() {
   const [users, setUsers] = useState(null);
-  const [params, setParams] = useState({ page: 1, count: 3 });
   const [page, setPage] = useState(1);
   const [disable, setDisable] = useState(false);
+  const [btnClass, setBtnClass] = useState("button");
+
+  const mobile = useMediaQuery({
+    query: "(min-width:320px) and (max-width:767px)",
+  });
+  const tablet = useMediaQuery({
+    query: "(min-width:768px) and (max-width:1023px)",
+  });
+  const desktop = useMediaQuery({ query: "(min-width:1024px)" });
 
   useEffect(() => {
-    GetUsers(params).then(setUsers);
-  }, [params, disable]);
+    if (mobile) {
+      GetMobileUsers(page).then(setUsers);
+    }
+  }, [page, mobile]);
+
+  useEffect(() => {
+    if (tablet) {
+      GetTabletUsers(page).then(setUsers);
+    }
+  }, [page, tablet]);
+
+  useEffect(() => {
+    if (desktop) {
+      GetDesktopUsers(page).then(setUsers);
+    }
+  }, [page, desktop]);
 
   function PageCounter() {
     if (page < users.total_pages) {
       setPage(page + 1);
     } else if (page === users.total_pages) {
       setDisable(true);
+      setBtnClass("button invisible");
     }
-    setParams({
-      page,
-      count: 3,
-    });
   }
 
   return (
@@ -36,7 +56,7 @@ export default function Users() {
         <Button
           active={disable}
           text={"Show more"}
-          className={"button"}
+          className={btnClass}
           onClick={PageCounter}
         />
       </div>

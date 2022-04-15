@@ -11,7 +11,7 @@ export default function Form() {
           Your personal data is stored according to the Privacy Policy
         </h3>
 
-        <form name="register" autoComplete="on" className="form">
+        <form id="signUp" name="register" autoComplete="on" className="form">
           <label className="register__label">
             <div className="register__wrapper">
               <input

@@ -1,6 +1,6 @@
 .userCard__thumb {
   height: 313px;
-  padding: 36px 30px 28px;
+  padding: 36px 30px;
   border-radius: 10px;
   background-color: $primaryBgColor;
 }
@@ -26,22 +26,10 @@
   text-align: center;
 }
 
-// Добавляем троеточие после двух радов
-.twoRows {
+//   Добавляем троеточие
+.threeDots {
   overflow: hidden;
   text-overflow: ellipsis;
-  // display: -webkit-box;
-  // -webkit-box-orient: vertical;
-  // -webkit-line-clamp: 2;
-}
-
-//   Добавляем троеточие после одного ряда
-.oneRow {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  // display: -webkit-box;
-  // -webkit-box-orient: vertical;
-  // -webkit-line-clamp: 2;
 }
 
 .userCard__wrapper {

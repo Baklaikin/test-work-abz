@@ -1,20 +1,32 @@
 .form__wrapper {
-  padding-top: 145px;
+  padding-top: 245px;
+
+  @media screen and(min-width:768px) {
+    padding-top: 275px;
+  }
 }
 
 .form {
   margin-bottom: 43px;
+  @media (min-width: 768px) {
+    width: 380px;
+    margin: 0 auto 43px;
+  }
 }
 
 .form__title {
   font-size: 40px;
   line-height: 1;
+  font-weight: 400;
   text-align: center;
 }
 
 .form__titleContainer {
   width: 295px;
   margin: 0 auto 10px;
+  @media screen and(min-width:768px) {
+    width: 704px;
+  }
 }
 
 .form__text {
@@ -22,6 +34,17 @@
   text-align: center;
   font-size: 22px;
   line-height: 1.2727;
+  font-weight: 400;
+}
+
+.form__radio {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 48px;
+  @media (min-width: 768px) {
+    width: 380px;
+    margin: 0 auto 48px;
+  }
 }
 
 .form__radio-wrapper {
@@ -62,12 +85,11 @@
 
 .form__selectPosition {
   margin-bottom: 11px;
-}
-
-.form__radio {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 48px;
+  @media (min-width: 768px) {
+    width: 380px;
+    text-align: left;
+    margin: 0 auto 11px;
+  }
 }
 
 .paws {
@@ -145,6 +167,11 @@
 .upload {
   display: flex;
   margin-bottom: 50px;
+
+  @media (min-width: 768px) {
+    width: 380px;
+    margin: 0 auto 50px;
+  }
 }
 .upload__button {
   width: 83px;

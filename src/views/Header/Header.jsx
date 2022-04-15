@@ -1,17 +1,24 @@
 import logo from "img/logo.svg";
 import logoText from "img/testtask.png";
 import { useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import MobileMenu from "views/Mobile-menu/MobileMenu";
+import Nav from "../Nav/Nav";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const mobileIsOpen = "mobile__background is-open";
   const mobileIsClosed = "mobile__background";
+  const desktop = useMediaQuery({ query: `(min-width:1024px)` });
+
   function MobileMenuToggle(e) {
     setIsOpen(!isOpen);
   }
   function Close(e) {
-    if (e.target.className === "mobile__background is-open") {
+    if (
+      e.target.className === "mobile__background is-open" ||
+      e.target.className === "mobileNavigation__item-link"
+    ) {
       setIsOpen(!isOpen);
     }
   }
@@ -26,16 +33,19 @@ export default function Header() {
         />
         <img src={logoText} alt="logo text TESTTASK" />
       </a>
-      <button
-        type="button"
-        className="menuButton"
-        onClick={(e) => MobileMenuToggle(e)}
-      ></button>
-      {isOpen ? (
+      {!desktop && (
+        <button
+          type="button"
+          className="menuButton"
+          onClick={(e) => MobileMenuToggle(e)}
+        ></button>
+      )}
+      {isOpen && !desktop ? (
         <MobileMenu className={mobileIsOpen} onClose={Close} />
       ) : (
-        <MobileMenu className={mobileIsClosed} />
+        <MobileMenu className={mobileIsClosed} onClose={Close} />
       )}
+      {desktop && <Nav />}
     </div>
   );
 }

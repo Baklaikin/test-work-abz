@@ -17,6 +17,11 @@
   color: $primaryBgColor;
 }
 
+.invisible {
+  display: none;
+  position: absolute;
+}
+
 .button__text {
   font-family: "Asap", sans-serif;
   font-size: 18px;

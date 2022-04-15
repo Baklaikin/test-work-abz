@@ -1,6 +1,14 @@
+import { useMediaQuery } from "react-responsive";
 import Button from "../Button/Button";
 
 export default function Hero() {
+  const mobile = useMediaQuery({ query: `(max-width:767px)` });
+  const mobileText = `Front-end developers make sure the user sees and interacts with all
+the necessary elements to ensure conversion.`;
+  const text = `Front-end developers make sure the user sees and interacts with all the 
+necessary elements to ensure conversion. Therefore, responsive design, programming languages
+and specific frameworks are the must-have skillsets to look for when assessing your front-end developers.`;
+
   return (
     <div className="hero">
       <div className="container">
@@ -10,10 +18,7 @@ export default function Hero() {
           </h1>
         </div>
         <div className="hero__textContainer">
-          <p className="hero__text points">
-            Front-end developers make sure the user sees and interacts with all
-            the necessary elements to ensure conversion.
-          </p>
+          <p className="hero__text points">{mobile ? mobileText : text}</p>
         </div>
         <Button text={"Sign up"} className={"button"} />
       </div>
