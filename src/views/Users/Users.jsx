@@ -22,19 +22,13 @@ export default function Users() {
     if (mobile) {
       GetMobileUsers(page).then(setUsers);
     }
-  }, [page, mobile]);
-
-  useEffect(() => {
     if (tablet) {
       GetTabletUsers(page).then(setUsers);
     }
-  }, [page, tablet]);
-
-  useEffect(() => {
     if (desktop) {
       GetDesktopUsers(page).then(setUsers);
     }
-  }, [page, desktop]);
+  }, [page, mobile, tablet, desktop]);
 
   function PageCounter() {
     if (page < users.total_pages) {

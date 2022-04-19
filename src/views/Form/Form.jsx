@@ -1,6 +1,36 @@
 import Button from "../Button/Button";
+import React, { useState } from "react";
 
 export default function Form() {
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    position: "",
+  });
+  const [active, setActive] = useState(false);
+
+  function handle(e) {
+    let value = e.target.value;
+    const name = e.target.name;
+    const newData = { ...data };
+    newData[name] = value;
+    setData(newData);
+    if (
+      data.name !== "" &&
+      data.email !== "" &&
+      data.phone !== "" &&
+      data.position !== ""
+    ) {
+      setActive(true);
+    }
+  }
+
+  function formInfo(e) {
+    e.preventDefault();
+    localStorage.setItem("user", JSON.stringify(data));
+    setData({ name: "", email: "", phone: "", position: "" });
+  }
   return (
     <section className="form__wrapper">
       <div className="container">
@@ -11,6 +41,7 @@ export default function Form() {
           Your personal data is stored according to the Privacy Policy
         </h3>
 
+        {/* Форма регистрации */}
         <form id="signUp" name="register" autoComplete="on" className="form">
           <label className="register__label">
             <div className="register__wrapper">
@@ -19,8 +50,10 @@ export default function Form() {
                 name="name"
                 className="inputs"
                 placeholder=" "
-                pattern="[A-Za-zА-Яа-я]{3,}"
+                value={data.name}
+                pattern="[A-Za-zА-Яа-я]{2,}"
                 required
+                onChange={(e) => handle(e)}
               />
               <p className="register__labelText">Your name</p>
             </div>
@@ -30,10 +63,12 @@ export default function Form() {
               <input
                 type="email"
                 name="email"
+                value={data.email}
                 className="inputs"
                 placeholder=" "
                 pattern="[a-zA-Z0-9!#$%'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
                 required
+                onChange={(e) => handle(e)}
               />
               <p className="register__labelText">Email</p>
             </div>
@@ -43,16 +78,19 @@ export default function Form() {
               <input
                 type="tel"
                 name="phone"
+                value={data.phone}
                 className="inputs"
                 placeholder=" "
                 pattern="[+38]{3}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}"
                 required
+                onChange={(e) => handle(e)}
               />
               <p className="register__labelText">Phone</p>
             </div>
           </label>
         </form>
         <p className="form__selectPosition">Select your position</p>
+        {/* Чекбоксы */}
         <form className="form__radio">
           <label className="form__radio-wrapper">
             <input
@@ -60,6 +98,7 @@ export default function Form() {
               name="position"
               value="Frontend developer"
               className="form__radio-input"
+              onClick={(e) => handle(e)}
             />
             <span className="customRadioBox">
               <span></span>
@@ -72,6 +111,7 @@ export default function Form() {
               name="position"
               value="Backend developer"
               className="form__radio-input"
+              onClick={(e) => handle(e)}
             />
             <span className="customRadioBox">
               <span></span>
@@ -84,6 +124,7 @@ export default function Form() {
               name="position"
               value="Designer"
               className="form__radio-input"
+              onClick={(e) => handle(e)}
             />
             <span className="customRadioBox">
               <span></span>
@@ -96,6 +137,7 @@ export default function Form() {
               name="position"
               value="QA"
               className="form__radio-input"
+              onClick={(e) => handle(e)}
             />
             <span className="customRadioBox">
               <span></span>
@@ -105,15 +147,21 @@ export default function Form() {
         </form>
         <div className="upload">
           <button className="upload__button">Upload</button>
-          <input
-            type="text"
-            placeholder="Upload your photo"
-            className="upload__input"
-          />
+          <label htmlFor="upload__file" className="upload__input">
+            <input
+              type="file"
+              placeholder="Upload your photo"
+              id="upload__file"
+            />
+            <p>Upload your photo</p>
+          </label>
         </div>
-        <div className="signUp-btn">
-          <Button text={"Sign up"} className={"signUp-btn"} />
-        </div>
+        <Button
+          text={"Sign up"}
+          className={"signUp__btn"}
+          onClick={formInfo}
+          active={active}
+        />
       </div>
       <div className="paws"></div>
     </section>

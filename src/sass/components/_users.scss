@@ -27,10 +27,6 @@
 }
 
 @media (max-width: 767px) {
-  // .users__item:first-of-type {
-
-  // }
-
   .users__item:not(:last-of-type) {
     margin-bottom: 20px;
   }
@@ -38,6 +34,11 @@
 
 .users__wrapper {
   padding-top: 0;
+}
+
+.users__wrapper > .users__button > button {
+  position: absolute;
+  left: calc(50% - 74px);
 }
 
 .users__button {

@@ -190,14 +190,27 @@
   border-left: none;
 }
 
-.signUp-btn {
+.upload__input > input {
+  display: none;
+}
+
+.upload__input > p {
+  color: $textUploadcolor;
+}
+
+.signUp__btn {
+  display: block;
   margin: 0 auto 25px;
   width: 148px;
   height: 50px;
-  background-color: $disabled;
+  background-color: $primaryButtonColor;
   border-radius: 80px;
   border: none;
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   line-height: 1.625;
+}
+
+.signUp__btn:disabled {
+  background-color: $disabled;
 }
