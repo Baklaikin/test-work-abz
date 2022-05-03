@@ -1,0 +1,40 @@
+.modal__background {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  background-color: $btnActionColor;
+}
+
+.modal__window {
+  width: 328px;
+  height: 220px;
+  border-radius: 4px;
+  padding: 24px;
+  background-color: $primaryBgColor;
+  @media screen and (min-width: 768px) {
+    width: 452px;
+    height: 194px;
+  }
+}
+
+.modal__title {
+  margin-bottom: 6px;
+  font-size: 22px;
+  line-height: 1.409;
+  font-weight: 400;
+}
+
+.modal__text {
+  margin-bottom: 33px;
+}
+
+.button-modal {
+  display: block;
+  margin-left: auto;
+}

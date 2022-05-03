@@ -1,5 +1,6 @@
 import Button from "../Button/Button";
 import React, { useState } from "react";
+import Modal from "views/Modal/Modal";
 
 export default function Form() {
   const [data, setData] = useState({
@@ -7,30 +8,36 @@ export default function Form() {
     email: "",
     phone: "",
     position: "",
+    file: null,
   });
+  const [name, setName] = useState("");
   const [active, setActive] = useState(false);
+  const [shouldModalOpen, setShouldModalOpen] = useState(false);
 
   function handle(e) {
-    let value = e.target.value;
-    const name = e.target.name;
+    const { name, value } = e.currentTarget;
     const newData = { ...data };
     newData[name] = value;
     setData(newData);
-    if (
+    const activate =
       data.name !== "" &&
       data.email !== "" &&
       data.phone !== "" &&
-      data.position !== ""
-    ) {
-      setActive(true);
+      data.position !== "";
+    if (activate) {
+      setActive(!active);
     }
   }
 
   function formInfo(e) {
     e.preventDefault();
     localStorage.setItem("user", JSON.stringify(data));
-    setData({ name: "", email: "", phone: "", position: "" });
+    setData({ name: "", email: "", phone: "", position: "", file: null });
+    setActive(!active);
+    setShouldModalOpen(!shouldModalOpen);
   }
+
+  console.log(data);
   return (
     <section className="form__wrapper">
       <div className="container">
@@ -42,7 +49,13 @@ export default function Form() {
         </h3>
 
         {/* Форма регистрации */}
-        <form id="signUp" name="register" autoComplete="on" className="form">
+        <form
+          id="signUp"
+          name="register"
+          autoComplete="on"
+          className="form"
+          onSubmit={formInfo}
+        >
           <label className="register__label">
             <div className="register__wrapper">
               <input
@@ -88,10 +101,11 @@ export default function Form() {
               <p className="register__labelText">Phone</p>
             </div>
           </label>
-        </form>
-        <p className="form__selectPosition">Select your position</p>
-        {/* Чекбоксы */}
-        <form className="form__radio">
+          {/* </form> */}
+          <p className="form__selectPosition">Select your position</p>
+
+          {/* Чекбоксы */}
+          {/* <form className="form__radio"> */}
           <label className="form__radio-wrapper">
             <input
               type="radio"
@@ -144,6 +158,13 @@ export default function Form() {
             </span>
             <p>QA</p>
           </label>
+          <Button
+            text={"Sign up"}
+            className={"signUp__btn"}
+            // onClick={formInfo}
+            active={active}
+          />
+          {/* <button type="submit">Submit</button> */}
         </form>
         <div className="upload">
           <button className="upload__button">Upload</button>
@@ -156,13 +177,14 @@ export default function Form() {
             <p>Upload your photo</p>
           </label>
         </div>
-        <Button
+        {/* <Button
           text={"Sign up"}
           className={"signUp__btn"}
           onClick={formInfo}
           active={active}
-        />
+        /> */}
       </div>
+      <Modal value={true} />
       <div className="paws"></div>
     </section>
   );

@@ -30,6 +30,12 @@
 .threeDots {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  // Если нужно несколько видимых строк
+  //   display: -webkit-box;
+  // -webkit-line-clamp: 2;
+  // -webkit-box-orient: vertical;
+  // white-space: normal;
 }
 
 .userCard__wrapper {
