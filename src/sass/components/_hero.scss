@@ -4,10 +4,13 @@
   height: 469px;
   padding: 51px 0px;
   margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
   background-image: url(../../img/hero.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #edecea;
 
   // Добавляю поддержку ретина изображиний для мобилки
   @media (min-device-pixel-ratio: 2),
@@ -34,11 +37,24 @@
     background-image: url(../../img/hero-desktop.jpg);
     height: 650px;
     padding: 185px 0;
+    background-position: right;
+    background-size: contain;
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: url(../../img/hero-desktop@2x.jpg);
+    }
+  }
+
+  @media (min-width: 1440px) {
+    background-size: contain;
+    background-image: url(../../img/hero-widescreen.jpg);
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../../img/hero-widescreen@x2.jpg);
     }
   }
 

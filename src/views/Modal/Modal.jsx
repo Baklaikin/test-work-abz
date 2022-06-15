@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import Button from "views/Button/Button";
 
 export default function Modal({ value }) {
-  const [isOpen, setIsOpen] = useState(value);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (value === true) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  }, [value]);
 
   function onClose(e) {
-    setIsOpen(!value);
+    setIsOpen(!isOpen);
   }
 
   return ReactDOM.createPortal(

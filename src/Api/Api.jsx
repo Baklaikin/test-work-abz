@@ -29,3 +29,22 @@ export async function GetDesktopUsers(page) {
     console.log(error.message);
   }
 }
+
+export async function PostUser(data) {
+  try {
+    const token = await axios.get(`/token`);
+    console.log(typeof token);
+    localStorage.setItem("token", JSON.stringify(token.data.token));
+    const response = await axios.post(
+      "/users",
+      { ...data },
+      {
+        headers: { Authorization: `${token}` },
+      }
+    );
+    console.log(token.data);
+    return response;
+  } catch (error) {
+    console.log(error.message);
+  }
+}

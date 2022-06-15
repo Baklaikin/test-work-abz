@@ -25,27 +25,29 @@ export default function Header() {
 
   return (
     <div className="header">
-      <a className="logo" href="index.html">
-        <img
-          src={logo}
-          alt="yellow cat that has a shape like triangle letter A"
-          className="picture"
-        />
-        <img src={logoText} alt="logo text TESTTASK" />
-      </a>
-      {!desktop && (
-        <button
-          type="button"
-          className="menuButton"
-          onClick={(e) => MobileMenuToggle(e)}
-        ></button>
-      )}
-      {isOpen && !desktop ? (
-        <MobileMenu className={mobileIsOpen} onClose={Close} />
-      ) : (
-        <MobileMenu className={mobileIsClosed} onClose={Close} />
-      )}
-      {desktop && <Nav />}
+      <div className="header__wrapper">
+        <a className="logo" href="index.html">
+          <img
+            src={logo}
+            alt="yellow cat that has a shape like triangle letter A"
+            className="picture"
+          />
+          <img src={logoText} alt="logo text TESTTASK" />
+        </a>
+        {!desktop && (
+          <button
+            type="button"
+            className="menuButton"
+            onClick={(e) => MobileMenuToggle(e)}
+          ></button>
+        )}
+        {isOpen && !desktop ? (
+          <MobileMenu className={mobileIsOpen} onClose={Close} />
+        ) : (
+          <MobileMenu className={mobileIsClosed} onClose={Close} />
+        )}
+        {desktop && <Nav />}
+      </div>
     </div>
   );
 }

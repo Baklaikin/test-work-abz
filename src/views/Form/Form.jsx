@@ -1,6 +1,8 @@
 import Button from "../Button/Button";
 import React, { useState } from "react";
 import Modal from "views/Modal/Modal";
+import { useEffect } from "react";
+import { PostUser } from "Api/Api";
 
 export default function Form() {
   const [data, setData] = useState({
@@ -14,30 +16,38 @@ export default function Form() {
   const [active, setActive] = useState(false);
   const [shouldModalOpen, setShouldModalOpen] = useState(false);
 
+  const activate =
+    data.name !== "" &&
+    data.email !== "" &&
+    data.phone !== "" &&
+    data.position !== "";
+
   function handle(e) {
     const { name, value } = e.currentTarget;
     const newData = { ...data };
     newData[name] = value;
     setData(newData);
-    const activate =
-      data.name !== "" &&
-      data.email !== "" &&
-      data.phone !== "" &&
-      data.position !== "";
-    if (activate) {
-      setActive(!active);
-    }
   }
+
+  useEffect(() => {
+    if (activate) {
+      setActive(true);
+    }
+  }, [activate]);
 
   function formInfo(e) {
     e.preventDefault();
-    localStorage.setItem("user", JSON.stringify(data));
+    PostUser(data);
+    // localStorage.setItem("user", JSON.stringify(data));
     setData({ name: "", email: "", phone: "", position: "", file: null });
-    setActive(!active);
-    setShouldModalOpen(!shouldModalOpen);
+    setActive(false);
+    setShouldModalOpen(true);
   }
 
-  console.log(data);
+  function onSignUpClick(e) {
+    setShouldModalOpen(false);
+  }
+
   return (
     <section className="form__wrapper">
       <div className="container">
@@ -161,10 +171,9 @@ export default function Form() {
           <Button
             text={"Sign up"}
             className={"signUp__btn"}
-            // onClick={formInfo}
+            onClick={(e) => onSignUpClick(e)}
             active={active}
           />
-          {/* <button type="submit">Submit</button> */}
         </form>
         <div className="upload">
           <button className="upload__button">Upload</button>
@@ -177,14 +186,8 @@ export default function Form() {
             <p>Upload your photo</p>
           </label>
         </div>
-        {/* <Button
-          text={"Sign up"}
-          className={"signUp__btn"}
-          onClick={formInfo}
-          active={active}
-        /> */}
       </div>
-      <Modal value={true} />
+      <Modal value={shouldModalOpen} />
       <div className="paws"></div>
     </section>
   );

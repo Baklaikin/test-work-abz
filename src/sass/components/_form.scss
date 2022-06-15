@@ -7,6 +7,7 @@
 }
 
 .form {
+  position: relative;
   margin-bottom: 43px;
   @media (min-width: 768px) {
     width: 380px;
@@ -166,11 +167,11 @@
 }
 .upload {
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 126px;
 
   @media (min-width: 768px) {
     width: 380px;
-    margin: 0 auto 50px;
+    margin: 0 auto 156px;
   }
 }
 .upload__button {
@@ -200,6 +201,9 @@
 
 .signUp__btn {
   display: block;
+  position: absolute;
+  bottom: -230px;
+  left: calc(50% - 74px);
   margin: 0 auto 25px;
   width: 148px;
   height: 50px;

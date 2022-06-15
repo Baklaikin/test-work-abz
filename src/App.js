@@ -15,7 +15,7 @@ function App() {
       <Users />
       <Form />
       <Footer />
-      <div className="mobile__bottom"></div>
+      <div className="bottom"></div>
     </>
   );
 }
