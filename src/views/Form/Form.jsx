@@ -2,25 +2,35 @@ import Button from "../Button/Button";
 import React, { useState } from "react";
 import Modal from "views/Modal/Modal";
 import { useEffect } from "react";
-import { PostUser } from "Api/Api";
+import { PostUser, GetPosition } from "Api/Api";
+import PhotoIcon from "../../img/avatar-icon-images-4.jpg";
 
 export default function Form() {
   const [data, setData] = useState({
     name: "",
     email: "",
     phone: "",
-    position: "",
-    file: null,
+    position_id: null,
+    photo: PhotoIcon,
   });
-  const [name, setName] = useState("");
+
   const [active, setActive] = useState(false);
   const [shouldModalOpen, setShouldModalOpen] = useState(false);
+  const [positions, setPositions] = useState([]);
 
   const activate =
     data.name !== "" &&
     data.email !== "" &&
     data.phone !== "" &&
-    data.position !== "";
+    data.position_id !== null;
+
+  // const fd = new FormData()
+  //   fd.append('name', `${data.name}`);
+  //   fd.append('email', `${data.email}`)
+  //   fd.append('phone', `${data.phone}`);
+  //   fd.append('position_id', `${data.position_id}`);
+  //   fd.append('photo', `${data.photo}`)
+  //   console.log("fd:",Array.from(fd))
 
   function handle(e) {
     const { name, value } = e.currentTarget;
@@ -35,11 +45,36 @@ export default function Form() {
     }
   }, [activate]);
 
+  useEffect(() => {
+    GetPosition().then(setPositions);
+  }, []);
+
   function formInfo(e) {
     e.preventDefault();
-    PostUser(data);
-    // localStorage.setItem("user", JSON.stringify(data));
-    setData({ name: "", email: "", phone: "", position: "", file: null });
+    const position_number = positions.find((pos) => {
+      if (pos.name === data.position_id) {
+        return pos;
+      }
+      return;
+    });
+
+    //Creating a formData
+    const fd = new FormData();
+    fd.append("name", `${data.name}`);
+    fd.append("email", `${data.email}`);
+    fd.append("phone", `${data.phone}`);
+    fd.append("position_id", `${position_number.id}`);
+    fd.append("photo", `${data.photo}`);
+
+    // const info = { ...data, position_id: position_number.id }
+    PostUser(fd);
+    setData({
+      name: "",
+      email: "",
+      phone: "",
+      position_id: null,
+      photo: PhotoIcon,
+    });
     setActive(false);
     setShouldModalOpen(true);
   }
@@ -111,63 +146,34 @@ export default function Form() {
               <p className="register__labelText">Phone</p>
             </div>
           </label>
-          {/* </form> */}
-          <p className="form__selectPosition">Select your position</p>
 
-          {/* Чекбоксы */}
-          {/* <form className="form__radio"> */}
-          <label className="form__radio-wrapper">
-            <input
-              type="radio"
-              name="position"
-              value="Frontend developer"
-              className="form__radio-input"
-              onClick={(e) => handle(e)}
-            />
-            <span className="customRadioBox">
-              <span></span>
-            </span>
-            <p>Frontend developer</p>
-          </label>
-          <label className="form__radio-wrapper">
-            <input
-              type="radio"
-              name="position"
-              value="Backend developer"
-              className="form__radio-input"
-              onClick={(e) => handle(e)}
-            />
-            <span className="customRadioBox">
-              <span></span>
-            </span>
-            <p>Backend developer</p>
-          </label>
-          <label className="form__radio-wrapper">
-            <input
-              type="radio"
-              name="position"
-              value="Designer"
-              className="form__radio-input"
-              onClick={(e) => handle(e)}
-            />
-            <span className="customRadioBox">
-              <span></span>
-            </span>
-            <p>Designer</p>
-          </label>
-          <label className="form__radio-wrapper">
-            <input
-              type="radio"
-              name="position"
-              value="QA"
-              className="form__radio-input"
-              onClick={(e) => handle(e)}
-            />
-            <span className="customRadioBox">
-              <span></span>
-            </span>
-            <p>QA</p>
-          </label>
+          {/*Radio buttons*/}
+          <p className="form__selectPosition">Select your position</p>
+          <ul>
+            {positions.map((pos) => {
+              const { id, name } = pos;
+              return (
+                <li key={id}>
+                  <label className="form__radio-wrapper" value={name}>
+                    <input
+                      key={id}
+                      type="radio"
+                      name="position_id"
+                      value={name}
+                      className="form__radio-input"
+                      onClick={(e) => handle(e)}
+                    />
+
+                    <span className="customRadioBox">
+                      <span></span>
+                    </span>
+                    <p>{name}</p>
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+
           <Button
             text={"Sign up"}
             className={"signUp__btn"}

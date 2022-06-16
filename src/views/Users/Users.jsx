@@ -31,9 +31,10 @@ export default function Users() {
   }, [page, mobile, tablet, desktop]);
 
   function PageCounter() {
-    if (page < users.total_pages) {
+    if (page <= users.total_pages - 1) {
       setPage(page + 1);
-    } else if (page === users.total_pages) {
+      console.log(users.users.length);
+    } else {
       setDisable(true);
       setBtnClass("button invisible");
     }

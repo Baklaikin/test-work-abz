@@ -33,17 +33,27 @@ export async function GetDesktopUsers(page) {
 export async function PostUser(data) {
   try {
     const token = await axios.get(`/token`);
-    console.log(typeof token);
-    localStorage.setItem("token", JSON.stringify(token.data.token));
-    const response = await axios.post(
-      "/users",
-      { ...data },
-      {
-        headers: { Authorization: `${token}` },
-      }
-    );
-    console.log(token.data);
-    return response;
+    return await axios.post("/users", data, {
+      headers: { Token: `${token.data.token}` },
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function GetPosition() {
+  try {
+    const response = await axios.get(`/positions`);
+    return response.data.positions;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function GetUser(id) {
+  try {
+    const response = await axios.get(`/users/${id}`);
+    return response.data;
   } catch (error) {
     console.log(error.message);
   }
