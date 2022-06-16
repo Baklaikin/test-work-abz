@@ -2,6 +2,7 @@
   "name": "test-work-abz",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Baklaikin.github.io/test-work-abz/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
@@ -19,6 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
@@ -42,6 +45,7 @@
   },
   "devDependencies": {
     "eslint": "^8.11.0",
+    "gh-pages": "^4.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
     "prettier": "^2.6.0"
