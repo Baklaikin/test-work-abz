@@ -34,7 +34,10 @@ export async function PostUser(data) {
   try {
     const token = await axios.get(`/token`);
     return await axios.post("/users", data, {
-      headers: { Token: `${token.data.token}` },
+      headers: {
+        Token: `${token.data.token}`,
+        "Content-Type": "multipart/form-data",
+      },
     });
   } catch (error) {
     console.log(error.message);

@@ -13,7 +13,6 @@ function App() {
       <Hero />
       <Acquaintance />
       <Users />
-      <Form />
       <Footer />
       <div className="bottom"></div>
     </>

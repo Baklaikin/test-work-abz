@@ -1,5 +1,6 @@
 import UserCard from "../UserCard/UserCard";
 import Button from "views/Button/Button";
+import Form from "views/Form/Form";
 import { GetMobileUsers, GetTabletUsers, GetDesktopUsers } from "../../Api/Api";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -9,6 +10,7 @@ export default function Users() {
   const [page, setPage] = useState(1);
   const [disable, setDisable] = useState(false);
   const [btnClass, setBtnClass] = useState("button");
+  const [reset, setReset] = useState(false);
 
   const mobile = useMediaQuery({
     query: "(min-width:320px) and (max-width:767px)",
@@ -28,7 +30,7 @@ export default function Users() {
     if (desktop) {
       GetDesktopUsers(page).then(setUsers);
     }
-  }, [page, mobile, tablet, desktop]);
+  }, [page, mobile, tablet, desktop, reset]);
 
   function PageCounter() {
     if (page <= users.total_pages - 1) {
@@ -55,6 +57,7 @@ export default function Users() {
           onClick={PageCounter}
         />
       </div>
+      <Form onSuccess={() => setReset(true)} />
     </div>
   );
 }

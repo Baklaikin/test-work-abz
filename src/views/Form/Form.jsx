@@ -2,10 +2,10 @@ import Button from "../Button/Button";
 import React, { useState } from "react";
 import Modal from "views/Modal/Modal";
 import { useEffect } from "react";
-import { PostUser, GetPosition } from "Api/Api";
+import { PostUser, GetPosition, GetDesktopUsers } from "Api/Api";
 import PhotoIcon from "../../img/avatar-icon-images-4.jpg";
 
-export default function Form() {
+export default function Form({ onSuccess }) {
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -22,15 +22,7 @@ export default function Form() {
     data.name !== "" &&
     data.email !== "" &&
     data.phone !== "" &&
-    data.position_id !== null;
-
-  // const fd = new FormData()
-  //   fd.append('name', `${data.name}`);
-  //   fd.append('email', `${data.email}`)
-  //   fd.append('phone', `${data.phone}`);
-  //   fd.append('position_id', `${data.position_id}`);
-  //   fd.append('photo', `${data.photo}`)
-  //   console.log("fd:",Array.from(fd))
+    data.position_id !== 0;
 
   function handle(e) {
     const { name, value } = e.currentTarget;
@@ -60,23 +52,28 @@ export default function Form() {
 
     //Creating a formData
     const fd = new FormData();
+
     fd.append("name", `${data.name}`);
     fd.append("email", `${data.email}`);
     fd.append("phone", `${data.phone}`);
-    fd.append("position_id", `${position_number.id}`);
-    fd.append("photo", `${data.photo}`);
+    fd.append("position_id", Number(`${position_number.id}`));
+    fd.append("photo", document.querySelector('input[type="file"]').files[0]);
 
-    // const info = { ...data, position_id: position_number.id }
-    PostUser(fd);
+    PostUser(fd).then((user) => {
+      console.log("user response:", user);
+      if (user.status === 201) {
+        onSuccess();
+        setShouldModalOpen(true);
+      }
+    });
     setData({
       name: "",
       email: "",
       phone: "",
-      position_id: null,
-      photo: PhotoIcon,
+      position_id: 0,
+      photo: null,
     });
     setActive(false);
-    setShouldModalOpen(true);
   }
 
   function onSignUpClick(e) {
